@@ -3,8 +3,9 @@ Survey Creator & Manager API
 [x] Create APIs
 [x] Create Routes
 [x] Setup base project
-[ ] Setup Route Controllers
+[x] Setup Route Controllers
 
 -- minor
 [ ] Setup 404 middle ware
 [ ] Error handler middle ware
+[ ] Add swagger

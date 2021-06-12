@@ -5,6 +5,8 @@ const cors = require("cors");
 
 require("dotenv").config();
 
+const api = require("./api");
+
 const app = express();
 
 app.use(morgan("dev"));
@@ -13,5 +15,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/", (_, res) => res.json({ message: "🦄🌈✨👋🌎🌍🌏✨🌈🦄" }));
+
+app.use("/api/v1/", api);
 
 module.exports = app;

@@ -7,9 +7,9 @@ Practice project to improve React and NodeJS/express.
 A01: GET: /api/surveys - Get all surveys
 A02: GET: /api/surveys?title={keyword} Find all surveys which title contains keyword
 A03: POST: /api/surveys - Create a survey
-A04: GET: /api/survey/:id - Get a survey by id
-A05: PUT /api/survey/:id Update a survey by :id
-A06: DELETE /api/survey/:id delete a survey by :id
+A04: GET: /api/surveys/:id - Get a survey by id
+A05: PUT /api/surveys/:id Update a survey by :id
+A06: DELETE /api/surveys/:id delete a survey by :id
 A07: DELETE /api/surveys delete all surveys
 
 ## Tech
