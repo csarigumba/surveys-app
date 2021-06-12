@@ -1,0 +1,15 @@
+Level 1
+[x] Think of a product name
+  - Visible Plan
+[ ] Gather free pictures
+[ ] Create a homepage
+[ ] Create feature pages
+
+Level 2
+[ ] Create a landing page
+[ ] Add a signup form
+
+Level 3
+[ ] Create a contact page
+[ ] Add a contact form
+[ ] Add contact links to site
