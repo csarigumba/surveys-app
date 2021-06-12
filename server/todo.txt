@@ -2,7 +2,7 @@ Survey Creator & Manager API
 
 [x] Create APIs
 [x] Create Routes
-[ ] Setup base project
+[x] Setup base project
 [ ] Setup Route Controllers
 
 -- minor
