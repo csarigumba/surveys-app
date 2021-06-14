@@ -5,15 +5,23 @@
   "name": "ok survey",
   "questions": {
     "q1": {
-      "type": "textinput",
-      "question": "What is your name?",
-      "required": true
+      "type": "option",
+      "question": "What is your favorite programming language?",
+      "options": ["JAVA", "C++", "C#", "C"]
     },
     "q2": {
       "type": "option",
       "question": "What is your favorite animal?",
-      "options": ["cat", "dog", "elephant"],
-      "required": false
+      "options": ["cat", "dog", "elephant"]
+    },
+    "q3": {
+      "type": "option",
+      "question": "What is your favorite animal?",
+      "options": ["cat", "dog", "elephant"]
+    },
+    "q4": {
+      "type": "textinput",
+      "question": "What is your name?"
     }
   }
 }
