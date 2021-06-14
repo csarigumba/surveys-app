@@ -55,12 +55,12 @@ router.put("/:id", async (req, res, next) => {
 
   try {
     const surveyId = req.params.id;
-    const requestBody = req.body;
-    const updatedSurvey = await surveys.findOneAndUpdate({ _id: surveyId }, { $set: requestBody });
+    const value = await schema.validateAsync(req.body);
+    const updatedSurvey = await surveys.findOneAndUpdate({ _id: surveyId }, { $set: value });
     res.json(updatedSurvey);
   } catch (error) {
     console.error(`Failed to update survey. reason=${error.message}`);
-    res.json({});
+    res.json(error);
   }
 });
 
