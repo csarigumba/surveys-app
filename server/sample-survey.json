@@ -1,0 +1,19 @@
+{
+  "_id": {
+    "$oid": "60c4b413b65a5fdac87a23ba"
+  },
+  "name": "ok survey",
+  "questions": {
+    "q1": {
+      "type": "textinput",
+      "question": "What is your name?",
+      "required": true
+    },
+    "q2": {
+      "type": "option",
+      "question": "What is your favorite animal?",
+      "options": ["cat", "dog", "elephant"],
+      "required": false
+    }
+  }
+}
