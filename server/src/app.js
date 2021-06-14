@@ -2,6 +2,7 @@ const express = require("express");
 const morgan = require("morgan");
 const helmet = require("helmet");
 const cors = require("cors");
+const middlewares = require("./middlewares");
 
 require("dotenv").config();
 
@@ -17,5 +18,8 @@ app.use(express.json());
 app.get("/", (_, res) => res.json({ message: "🦄🌈✨👋🌎🌍🌏✨🌈🦄" }));
 
 app.use("/api/v1/", api);
+
+// custom middleswares
+app.use(middlewares.notFound);
 
 module.exports = app;
