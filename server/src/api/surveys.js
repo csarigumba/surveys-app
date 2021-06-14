@@ -77,8 +77,16 @@ router.delete("/:id", async (req, res, next) => {
 });
 
 // A07: DELETE /api/surveys delete all surveys
-router.delete("/", (req, res, next) => {
-  res.json("A07: DELETE /api/surveys delete all surveys");
+router.delete("/", async (req, res, next) => {
+  console.log(`Running A07 API: Delete all surveys`);
+
+  try {
+    const deleteResponse = await surveys.remove({});
+    res.json(deleteResponse);
+  } catch (error) {
+    console.error(`Failed to delete surveys: ${error.message}`);
+    res.json({});
+  }
 });
 
 module.exports = router;

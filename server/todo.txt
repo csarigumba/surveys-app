@@ -11,8 +11,8 @@ Survey Creator & Manager API
 [x] A03
 [x] A04
 [x] A05
-[ ] A06
-[ ] A07
+[x] A06
+[x] A07
 [ ] Add validation to A03: create
 
 -- minor
