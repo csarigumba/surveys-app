@@ -1,13 +1,7 @@
 const router = require("express").Router();
 const db = require("../db");
 const surveys = db.get("surveys");
-const Joi = require("@hapi/joi");
-
-const schema = Joi.object({
-  title: Joi.string().min(3).max(30).required(),
-  description: Joi.string(),
-  questions: Joi.array()
-});
+const schema = require("../validation/survey.validation");
 
 // A01: GET: /api/surveys - Get all surveys
 // A02: GET: /api/surveys?title={keyword} Find all surveys which title contains keyword
