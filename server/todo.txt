@@ -9,10 +9,11 @@ Survey Creator & Manager API
 [x] A01
 [ ] A02
 [x] A03
-[x] A04
+[ ] A04
 [ ] Add validation to A03: create
 
 -- minor
 [ ] Setup 404 middle ware
 [ ] Error handler middle ware
+[ ] Add swagger
 [ ] Add swagger

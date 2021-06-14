@@ -11,6 +11,7 @@ router.get("/", async (req, res, next) => {
     res.json(items);
   } catch (error) {
     console.error(`Error retrieving surveys: ${error.message}`);
+    res.json({});
   }
 });
 
@@ -23,12 +24,26 @@ router.post("/", async (req, res, next) => {
     res.json(insertedSurvey);
   } catch (error) {
     console.error(`Error creating survey: ${error.message}`);
+    res.json({});
   }
 });
 
 // A04: GET: /api/surveys/:id - Get a survey by id
-router.get("/:id", (req, res, next) => {
-  res.json("A04: GET: /api/surveys/:id - Get a survey by id");
+router.get("/:id", async (req, res, next) => {
+  console.log(`Running A04 API.`);
+
+  try {
+    const surveyId = req.params.id;
+    console.log(`Finding survey with id: ${surveyId}`);
+    const survey = await surveys.findOne({ _id: surveyId });
+
+    if (!survey) next();
+    console.log(`Survey found: ${surveyId}`);
+    res.json(survey);
+  } catch (error) {
+    console.error(`No survey found. reason=${error.message}`);
+    res.json({});
+  }
 });
 
 // A05: PUT /api/surveys/:id Update a survey by :id
