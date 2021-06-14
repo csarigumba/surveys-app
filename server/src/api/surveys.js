@@ -26,7 +26,7 @@ router.post("/", async (req, res, next) => {
     res.json(insertedSurvey);
   } catch (error) {
     console.error(`Error creating survey: ${error.message}`);
-    res.json(error);
+    next(error);
   }
 });
 
