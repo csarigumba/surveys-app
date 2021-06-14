@@ -1,8 +1,5 @@
-const { default: monk } = require("monk");
-
 const router = require("express").Router();
-
-const db = monk(process.env.DB_HOST);
+const db = require("../db");
 const surveys = db.get("surveys");
 
 // A01: GET: /api/surveys - Get all surveys
