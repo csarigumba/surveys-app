@@ -5,6 +5,7 @@ const surveys = db.get("surveys");
 // A01: GET: /api/surveys - Get all surveys
 // A02: GET: /api/surveys?title={keyword} Find all surveys which title contains keyword
 router.get("/", async (req, res, next) => {
+  console.log(`Running A01 API.`);
   try {
     const items = await surveys.find({});
     res.json(items);
@@ -14,8 +15,15 @@ router.get("/", async (req, res, next) => {
 });
 
 // A03: POST: /api/surveys - Create a survey
-router.post("/", (req, res, next) => {
-  res.json("A03: POST: /api/surveys - Create a survey");
+router.post("/", async (req, res, next) => {
+  console.log(`Running A03 API.`);
+  try {
+    const requestBody = req.body;
+    const insertedSurvey = await surveys.insert(requestBody);
+    res.json(insertedSurvey);
+  } catch (error) {
+    console.error(`Error creating survey: ${error.message}`);
+  }
 });
 
 // A04: GET: /api/surveys/:id - Get a survey by id
