@@ -5,7 +5,7 @@ const surveys = db.get("surveys");
 // A01: GET: /api/surveys - Get all surveys
 // A02: GET: /api/surveys?title={keyword} Find all surveys which title contains keyword
 router.get("/", async (req, res, next) => {
-  console.log(`Running A01 API.`);
+  console.log(`Running A01 API. Find all surveys.`);
   try {
     const items = await surveys.find({});
     res.json(items);
@@ -17,7 +17,7 @@ router.get("/", async (req, res, next) => {
 
 // A03: POST: /api/surveys - Create a survey
 router.post("/", async (req, res, next) => {
-  console.log(`Running A03 API.`);
+  console.log(`Running A03 API. Create survey.`);
   try {
     const requestBody = req.body;
     const insertedSurvey = await surveys.insert(requestBody);
@@ -30,7 +30,7 @@ router.post("/", async (req, res, next) => {
 
 // A04: GET: /api/surveys/:id - Get a survey by id
 router.get("/:id", async (req, res, next) => {
-  console.log(`Running A04 API.`);
+  console.log(`Running A04 API. Find one.`);
 
   try {
     const surveyId = req.params.id;
@@ -47,8 +47,18 @@ router.get("/:id", async (req, res, next) => {
 });
 
 // A05: PUT /api/surveys/:id Update a survey by :id
-router.put("/:id", (req, res, next) => {
-  res.json("A05: PUT /api/surveys/:id Update a survey by :id");
+router.put("/:id", async (req, res, next) => {
+  console.log(`Running A05 API: Find one and update.`);
+
+  try {
+    const surveyId = req.params.id;
+    const requestBody = req.body;
+    const updatedSurvey = await surveys.findOneAndUpdate({ _id: surveyId }, { $set: requestBody });
+    res.json(updatedSurvey);
+  } catch (error) {
+    console.error(`Failed to update survey. reason=${error.message}`);
+    res.json({});
+  }
 });
 
 // A06: DELETE /api/surveys/:id delete a survey by :id
