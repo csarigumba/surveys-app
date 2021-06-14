@@ -36,6 +36,7 @@ router.get("/:id", async (req, res, next) => {
     const surveyId = req.params.id;
     console.log(`Finding survey with id: ${surveyId}`);
     const survey = await surveys.findOne({ _id: surveyId });
+    console.log(survey);
 
     if (!survey) next();
     console.log(`Survey found: ${surveyId}`);
@@ -62,8 +63,17 @@ router.put("/:id", async (req, res, next) => {
 });
 
 // A06: DELETE /api/surveys/:id delete a survey by :id
-router.delete("/:id", (req, res, next) => {
-  res.json("A06: DELETE /api/surveys/:id delete a survey by :id");
+router.delete("/:id", async (req, res, next) => {
+  console.log(`Running A06 API: Find one and delete.`);
+
+  try {
+    const surveyId = req.params.id;
+    const updatedSurvey = await surveys.findOneAndDelete({ _id: surveyId });
+    res.json(updatedSurvey);
+  } catch (error) {
+    console.error(`Failed to delete survey. reason=${error.message}`);
+    res.json({});
+  }
 });
 
 // A07: DELETE /api/surveys delete all surveys
