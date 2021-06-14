@@ -1,11 +1,19 @@
 const router = require("express").Router();
 const db = require("../db");
 const surveys = db.get("surveys");
+const Joi = require("@hapi/joi");
+
+const schema = Joi.object({
+  title: Joi.string().min(3).max(30).required(),
+  description: Joi.string(),
+  questions: Joi.array()
+});
 
 // A01: GET: /api/surveys - Get all surveys
 // A02: GET: /api/surveys?title={keyword} Find all surveys which title contains keyword
 router.get("/", async (req, res, next) => {
   console.log(`Running A01 API. Find all surveys.`);
+
   try {
     const items = await surveys.find({});
     res.json(items);
@@ -19,12 +27,12 @@ router.get("/", async (req, res, next) => {
 router.post("/", async (req, res, next) => {
   console.log(`Running A03 API. Create survey.`);
   try {
-    const requestBody = req.body;
-    const insertedSurvey = await surveys.insert(requestBody);
+    const value = await schema.validateAsync(req.body);
+    const insertedSurvey = await surveys.insert(value);
     res.json(insertedSurvey);
   } catch (error) {
     console.error(`Error creating survey: ${error.message}`);
-    res.json({});
+    res.json(error);
   }
 });
 
