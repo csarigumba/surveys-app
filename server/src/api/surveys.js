@@ -1,9 +1,19 @@
+const { default: monk } = require("monk");
+
 const router = require("express").Router();
+
+const db = monk(process.env.DB_HOST);
+const surveys = db.get("surveys");
 
 // A01: GET: /api/surveys - Get all surveys
 // A02: GET: /api/surveys?title={keyword} Find all surveys which title contains keyword
-router.get("/", (req, res, next) => {
-  res.json("A01: GET: /api/surveys - Get all surveys");
+router.get("/", async (req, res, next) => {
+  try {
+    const items = await surveys.find({});
+    res.json(items);
+  } catch (error) {
+    console.error(`Error retrieving surveys: ${error.message}`);
+  }
 });
 
 // A03: POST: /api/surveys - Create a survey
