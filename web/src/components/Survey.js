@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Survey = () => {
   const [q1, setQ1] = useState("");
@@ -26,12 +26,12 @@ const Survey = () => {
       },
       {
         type: "option",
-        question: "What is your favorite animal?",
-        options: ["cat", "dog", "elephant"]
+        question: "What is your favorite school?",
+        options: ["USC", "CIT", "FSUU"]
       },
       {
         type: "textinput",
-        question: "What is your name?"
+        question: "What is your favorite React tools?"
       }
     ]
   };

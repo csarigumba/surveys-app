@@ -1,0 +1,32 @@
+{
+  "surveys": [
+    {
+      "_id": {
+        "$oid": "60c4b413b65a5fdac87a23ba"
+      },
+      "title": "React Technologies",
+      "description": "Sequi harum inventore esse. Inventore non id id repudiandae est voluptatum. Repellendus laudantium incidunt ratione sint. Qui corrupti sint. Nobis hic ut culpa sit sint excepturi esse doloribus aliquam.",
+      "questions": [
+        {
+          "type": "option",
+          "question": "What is your favorite programming language?",
+          "options": ["JAVA", "C++", "C#", "C"]
+        },
+        {
+          "type": "option",
+          "question": "What is your favorite animal?",
+          "options": ["cat", "dog", "elephant"]
+        },
+        {
+          "type": "option",
+          "question": "What is your favorite school?",
+          "options": ["USC", "CIT", "FSUU"]
+        },
+        {
+          "type": "textinput",
+          "question": "What is your favorite React tools?"
+        }
+      ]
+    }
+  ]
+}
