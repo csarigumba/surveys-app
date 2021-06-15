@@ -1,4 +1,11 @@
+import { useState } from "react";
+
 const Survey = () => {
+  const [q1, setQ1] = useState("");
+  const [q2, setQ2] = useState("");
+  const [q3, setQ3] = useState("");
+  const [q4, setQ4] = useState("");
+
   const survey = {
     _id: {
       $oid: "60c4b413b65a5fdac87a23ba"
@@ -30,8 +37,28 @@ const Survey = () => {
   };
 
   const handleSubmit = async e => {
-    console.log(`Submiting survey.`);
     e.preventDefault();
+
+    console.log(`Submiting survey.`);
+    const survey = { q1, q2, q3, q4 };
+    console.log(survey);
+  };
+
+  const handleRadioOnChange = e => {
+    console.log("Radio");
+    switch (e.target.name) {
+      case "q1":
+        setQ1(e.target.value);
+        break;
+      case "q2":
+        setQ2(e.target.value);
+        break;
+      case "q3":
+        setQ3(e.target.value);
+        break;
+      default:
+        break;
+    }
   };
 
   return (
@@ -53,8 +80,10 @@ const Survey = () => {
                     <input
                       className="form-check-input"
                       type="radio"
-                      name={`flexRadioDefault${surveyQIdx}`}
+                      name={`q${surveyQIdx + 1}`}
+                      value={option}
                       id="flexRadioDefault1"
+                      onChange={handleRadioOnChange}
                     />
                     <label className="form-check-label" htmlFor="flexRadioDefault1">
                       {option}
@@ -64,14 +93,17 @@ const Survey = () => {
               </div>
             ) : (
               <div>
-                <textarea className="form-control mt-1" id="floatingTextarea2" style={{ height: "100px" }}></textarea>
+                <textarea
+                  className="form-control mt-1"
+                  id="floatingTextarea2"
+                  style={{ height: "100px" }}
+                  onChange={e => setQ4(e.target.value)}
+                ></textarea>
               </div>
             )}
           </div>
         ))}
-        <div className="d-grid gap-2 col-6 mx-auto">
-          <button className="btn btn-outline-success btn-lg mt-5">Submit</button>
-        </div>
+        <button className="btn btn-outline-success btn-lg mt-5">Save</button>
       </form>
     </div>
   );
