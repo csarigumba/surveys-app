@@ -3,7 +3,7 @@ import Survey from "./components/Survey";
 
 function App() {
   return (
-    <div>
+    <div className="container">
       <Survey />
     </div>
   );

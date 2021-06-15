@@ -1,6 +1,6 @@
 Survey Creator & Manager
-[ ] Create survey questions
-[ ] Create survey form
+[x] Create survey questions
+[x] Create survey form
 [ ] Add response storage
 [ ] Create dashboard
 [ ] Add survey creation
